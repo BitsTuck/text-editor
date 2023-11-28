@@ -28,7 +28,7 @@ registerRoute(({ request }) => ['style', 'script', 'worker'], request.mode === '
 
 // TODO: Implement asset caching
 
-const assetCache = new CacheFirst ({
+new CacheFirst ({
   cacheName: 'asset-cache',
   plugins: [
     new CacheableResponsePlugin ({
