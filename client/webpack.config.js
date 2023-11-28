@@ -12,13 +12,17 @@ module.exports = () => {
     entry: {
       main: './src/js/index.js',
       install: './src/js/install.js',
-      editor: './src/js/editor.js'
+      // editor: './src/js/editor.js'
     },
     output: {
       filename: '[name].bundle.js',
       path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
+      new HtmlWebpackPlugin({
+        template:'./index.html',
+        title:'jate'
+      }),
       new InjectManifest({
         swSrc: './src-sw.js',
         swDest: 'src-sw.js'
@@ -41,6 +45,8 @@ module.exports = () => {
           },
         ],
       }),
+
+     
     ],
 
     module: {
@@ -56,7 +62,7 @@ module.exports = () => {
             loader: 'babel-loader', 
             options: {
               presets: ['@babel/preset-env'],
-              plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/transform-run'],
+              plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/transform-runtime'],
             },
           },
         },
